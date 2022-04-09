@@ -6,6 +6,8 @@ Scripts for the automating of some file naming and formatting tasks
 * You should have permissions in your file system to rename files
 
 ## Usage
+
+### Prefix Script
 Open command prompt or terminal, navigate to the folder/directory where the script is located, and run `python prefix.py` or `python3 prefix.py`. This will open up a GUI that will look like the below image.
 
 ![Screenshot from 2022-04-08 22-07-51](https://user-images.githubusercontent.com/45480121/162555697-6b59c012-d9e1-448a-8339-78e2f0fcfd05.png)
@@ -14,4 +16,7 @@ First enter the string you would like to prepend to the beginning of each file n
 
 **Note**: When usingf the folder mode, be sure to actually click into the folder you want to open before cliking open in the explorer, do not just click teh folder once and then click open or else you will rename all of the files one folder to high.
 
-For a more detailed insight, please see [this](https://watch.screencastify.com/v/9sCturQTdoSnaCQqt6WV) video.
+For a more detailed insight and information on how to make a desktop shortcut for the program instead of running from the command prompt, please see [this](https://watch.screencastify.com/v/9sCturQTdoSnaCQqt6WV) video.
+
+### Column Values Script
+The GUI will look exactly the same as with the prefix script for the column script. It is operated the same as the prefix script aswell. See the video above for how to download, run, and make a shortcut for the column value script.
