@@ -14,4 +14,4 @@ First enter the string you would like to prepend to the beginning of each file n
 
 **Note**: When usingf the folder mode, be sure to actually click into the folder you want to open before cliking open in the explorer, do not just click teh folder once and then click open or else you will rename all of the files one folder to high.
 
-For a more detailed insight, please see [this](https://drive.google.com/file/d/13JVDdkYmC3v1SkHBca_fVSAfMVs1ratD/view) video.
+For a more detailed insight, please see [this](https://watch.screencastify.com/v/9sCturQTdoSnaCQqt6WV) video.
