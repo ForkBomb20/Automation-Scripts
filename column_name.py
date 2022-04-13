@@ -1,6 +1,5 @@
 import pandas as pd
 from tkinter import *
-import os
 import pathlib
 
 from tkinter import filedialog
@@ -10,53 +9,53 @@ from tkinter import messagebox
 # Function for opening the
 # file explorer window
 def browseFiles():
-    if not string_entry.get():
-        messagebox.showwarning("Warning", "Please enter a prefix before browsing")
+    # if not string_entry.get():
+    #     messagebox.showwarning("Warning", "Please enter a prefix before browsing")
+    # else:
+    filename = filedialog.askopenfilename(initialdir="/",
+                                          title="Select a File")
+    if filename == ():
+        pass
     else:
-        filename = filedialog.askopenfilename(initialdir="/",
-                                              title="Select a File")
-        if filename == ():
-            pass
+        if filename.endswith(".csv"):
+            df = pd.read_csv(filename)
+            df[df.columns[0]] = filename.split("/")[-1].split(".")[0]
+            df.to_csv(filename, index=False)
+            label_file_explorer.configure(text="File Opened: " + filename + "\nRow values set")
         else:
-            if filename.endswith(".csv"):
-                df = pd.read_csv(filename)
-                df[df.columns[0]] = string_entry.get()
-                df.to_csv(filename, index=False)
-                label_file_explorer.configure(text="File Opened: " + filename + "\nRow values set")
-            else:
-                messagebox.showwarning("Warning", "Please select a csv file")
+            messagebox.showwarning("Warning", "Please select a csv file")
 
 
 def browseDirectories():
-    if not string_entry.get():
-        messagebox.showwarning("Warning", "Please enter a prefix before browsing")
+    # if not string_entry.get():
+    #     messagebox.showwarning("Warning", "Please enter a prefix before browsing")
+    # else:
+    directory = filedialog.askdirectory(initialdir="/",
+                                        title="Select a Directory")
+
+    if directory == ():
+        pass
+
     else:
-        directory = filedialog.askdirectory(initialdir="/",
-                                            title="Select a Directory")
-
-        if directory == ():
-            pass
-
-        else:
-            path = pathlib.Path(directory)
-            # Check if all files are csv files if not raise warning
-            for file in path.iterdir():
-                if file.suffix != ".csv":
-                    messagebox.showwarning("Warning", "Please select only csv files")
-                    return
-            # If all files are csv files then set the prefix
-            for file in path.iterdir():
-                df = pd.read_csv(file)
-                df[df.columns[0]] = string_entry.get()
-                df.to_csv(file, index=False)
-            label_file_explorer.configure(text="Directory Opened: " + directory + "\nRow values set")
+        path = pathlib.Path(directory)
+        # Check if all files are csv files if not raise warning
+        for file in path.iterdir():
+            if file.suffix != ".csv":
+                messagebox.showwarning("Warning", "Please select only csv files")
+                return
+        # If all files are csv files then set the prefix
+        for file in path.iterdir():
+            df = pd.read_csv(file)
+            df[df.columns[0]] = file.name.split(".")[0]
+            df.to_csv(file, index=False)
+        label_file_explorer.configure(text="Directory Opened: " + directory + "\nRow values set")
 
 
 # Create the root window
 window = Tk()
 
 # Set window title
-window.title('File Prefixer')
+window.title('Column Values')
 
 # Set window size
 window.geometry("800x200")
@@ -66,7 +65,7 @@ window.config(background="white")
 
 # Create a File Explorer label
 label_file_explorer = Label(window,
-                            text="File Prefixer",
+                            text="Column Values",
                             width=100, height=4,
                             fg="blue")
 
@@ -78,7 +77,7 @@ button_file = Button(window,
                         text="Browse Files",
                         command=browseFiles)
 
-string_entry = Entry(window, width=20)
+# string_entry = Entry(window, width=20)
 
 
 button_exit = Button(window,
@@ -94,7 +93,7 @@ label_file_explorer.grid(column=1, row=1)
 button_directory.grid(column=1, row=3)
 button_file.grid(column=1, row=2)
 
-string_entry.grid(column=1, row=4)
+# string_entry.grid(column=1, row=4)
 
 button_exit.grid(column=1, row=5)
 
