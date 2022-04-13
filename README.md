@@ -20,3 +20,4 @@ For a more detailed insight and information on how to make a desktop shortcut fo
 
 ### Column Values Script
 The GUI will look exactly the same as with the prefix script for the column script. It is operated the same as the prefix script aswell. See the video above for how to download, run, and make a shortcut for the column value script.
+**Note**: For this script you will need to type the follwing into your command prompt in order for the script to run. `pip install pandas`
